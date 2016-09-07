@@ -12,7 +12,7 @@ Take a look at the build in package: [Naoray/Test](https://github.com/Naoray/pac
 ### Step 1 : clone repo
 
 `git clone https://github.com/Naoray/package-dev.git`
- 
+
 ### Step 2 :  Create your package sub folder, service provider and facades
  
 In root directory create a folder called `packages/your_github_name/your_package_name/src/`
@@ -24,26 +24,83 @@ To create a ServiceProvider simply run `php artisan make:provider Your_Package_n
 `app/providers` to your packages `src/` directory.
 
 Take a look at this [file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/TestServiceProvider.php) as an example.
-  
+   
+---
 #### Creating Routes
 
 In your `src` folder create a new `routes` folder in which you create your webroutes file named `web.php`.
 e.g. like [here](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/routes/web.php)
-  
+ 
+---
 #### Creating Controllers
 
 In your `Http` folder create a new directory called `Controllers`. In this folder you can create your controller.
 e.g. like [here](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/Http/Controllers/TestController.php)
-
+ 
+---
 #### Creating Config
 
 In your `src` folder create a new directory and call it `config`. In it create a new file (e.g. `test.php`) like [this](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/config/test.php)
    
+---
 #### Creating Views
  
 In your `src` folder create a new directory and call it `resources/` and in this folder create a new folder named `views/`. In the `views/` folder you can create your own custom blade views.
 ([example file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/resources/views/test.blade.php)
+ 
+---
+### Creating Commands
 
+Run `php artisan make:command CommandName`, go to `app/Console/` and cut out the `Commands/` folder. Now go to your packages
+`src` folder and paste it.
+
+Add the command to the *ServiceProvider*'s *command* array and register the command like in this [file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/TestServiceProvider.php))
+```php
+        /**
+         * The commands to be registered.
+         *
+         * @var array
+         */
+        protected $commands = [
+            'Test' => 'command.test.test',
+        ];
+        
+        public function register()
+        {
+                /**
+                 * some other code ...
+                 */
+        
+                $this->registerCommands();
+        }
+        
+        /**
+         * Register the given commands.
+         *
+         * @return void
+         */
+        protected function registerCommands()
+        {
+            foreach (array_keys($this->commands) as $command) {
+                $method = "register{$command}Command";
+                call_user_func_array([$this, $method], []);
+            }
+    
+            $this->commands(array_values($this->commands));
+        }
+    
+        /**
+         * Register the test command
+         */
+        protected function registerTestCommand()
+        {
+            $this->app->singleton('command.test.test', function () {
+                return new TestCommand();
+            });
+        }
+```
+ 
+---
 #### Creating Facades
 
 In your `src` folder create a `facades/` folder. Within the `facades/` folder create your facade files.
