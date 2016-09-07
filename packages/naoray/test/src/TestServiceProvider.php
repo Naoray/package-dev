@@ -3,6 +3,7 @@
 namespace Naoray\Test;
 
 use Illuminate\Support\ServiceProvider;
+use Naoray\Test\Commands\TestCommand;
 
 class TestServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,15 @@ class TestServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'Naoray\Test\Http\Controllers';
+
+    /**
+     * The commands to be registered.
+     *
+     * @var array
+     */
+    protected $commands = [
+        'Test' => 'command.test.test',
+    ];
 
     /**
      * Bootstrap the application services.
@@ -46,6 +56,8 @@ class TestServiceProvider extends ServiceProvider
         $this->app->bind('naoray-test', function() {
             return new Test;
         });
+
+        $this->registerCommands();
     }
 
     /**
@@ -62,6 +74,31 @@ class TestServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
         ], function ($router) {
             require __DIR__.'/routes/web.php';
+        });
+    }
+
+    /**
+     * Register the given commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        foreach (array_keys($this->commands) as $command) {
+            $method = "register{$command}Command";
+            call_user_func_array([$this, $method], []);
+        }
+
+        $this->commands(array_values($this->commands));
+    }
+
+    /**
+     * Register the test command
+     */
+    protected function registerTestCommand()
+    {
+        $this->app->singleton('command.test.test', function () {
+            return new TestCommand();
         });
     }
 }
