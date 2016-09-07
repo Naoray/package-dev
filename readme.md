@@ -2,6 +2,8 @@
 
 I had some troubles getting started with package development in **laravel 5.3**, that's why this repository was created.
 
+Take a look at the build in package: [Naoray/Test](https://github.com/Naoray/package-dev/tree/master/packages/naoray/test)!
+
 # Functionality
 
 This package boilerplate demonstrates some basic functionality usage which you can reuse for your own package development.
