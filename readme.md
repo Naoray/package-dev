@@ -107,7 +107,7 @@ Run `composer dump-autoload` - make sure there are no errors.
 
 Now you are ready to test your package!
 
-# Functionality
+## Functionality
 
 This package boilerplate demonstrates some basic functionality usage which you can reuse for your own package development.
 Such as using... 
@@ -118,6 +118,6 @@ Such as using...
 - views
 - facades
 
-# Something missing?
+## Something missing?
 
 If you want me to add something just open an issue and describe your desire!
