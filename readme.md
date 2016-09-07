@@ -3,7 +3,7 @@
 I had some troubles getting started with package development in **laravel 5.3**, that's why this repository was created.
 
 This repo is for helping you to have a quick and easy start with package development in *laravel 5.3*. It was inspired 
-by (jaiwalker)[https://github.com/jaiwalker]'s [jaiwalker/setup-laravel5-package](https://github.com/jaiwalker/setup-laravel5-package)
+by [jaiwalker](https://github.com/jaiwalker)'s [jaiwalker/setup-laravel5-package](https://github.com/jaiwalker/setup-laravel5-package)
 
 Take a look at the build in package: [Naoray/Test](https://github.com/Naoray/package-dev/tree/master/packages/naoray/test)!
 
