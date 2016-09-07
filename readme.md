@@ -49,7 +49,7 @@ In your `src` folder create a new directory and call it `resources/` and in this
 ([example file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/resources/views/test.blade.php)
  
 ---
-### Creating Commands
+#### Creating Commands
 
 Run `php artisan make:command CommandName`, go to `app/Console/` and cut out the `Commands/` folder. Now go to your packages
 `src` folder and paste it.
