@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return Test::saySomething() . ' ' . config('test.message');
+    return view('welcome');
 });
