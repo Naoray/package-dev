@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "naoray/package-dev",
+    "description": "Example package development for Laravel 5.3.",
+    "keywords": ["framework", "laravel", "package development"],
     "license": "MIT",
     "type": "project",
     "require": {
