@@ -1,0 +1,20 @@
+{
+    "name": "naoray/test",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Naoray",
+            "email": "krishan.koenig@googlemail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Naoray\\Test\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "illuminate/support": "~5"
+    }
+}
