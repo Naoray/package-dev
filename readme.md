@@ -9,9 +9,14 @@ Take a look at the build in package: [Naoray/Test](https://github.com/Naoray/pac
 
 ## start developing your own package
 
-### Step 1 : clone repo
+### Step 1 : clone repo and install dependencies
 
 `git clone https://github.com/Naoray/package-dev.git`
+
+and install the dependencies through composer:
+
+`composer install`
+this will also generate a `key` for your application and copy the `.env.example` file into an `.env` file
 
 ### Step 2 :  Create your package sub folder, service provider and facades
  
