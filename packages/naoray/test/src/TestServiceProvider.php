@@ -40,7 +40,7 @@ class TestServiceProvider extends ServiceProvider
             __DIR__.'/Config/test.php' => config_path('test.php'),
         ]);
 
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'test');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'test');
     }
 
     /**
