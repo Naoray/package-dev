@@ -1,3 +1,3 @@
 <?php
 
-Route::get('/test', 'TestController@index');
+Route::get('/test', 'Naoray\Test\Http\Controllers\TestController@index');

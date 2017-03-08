@@ -167,6 +167,8 @@ return [
          * Package Service Providers...
          */
 
+        Laravel\Dusk\DuskServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
         Naoray\Test\TestServiceProvider::class,
 
         /*
@@ -221,7 +223,7 @@ return [
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
-        'Test' => Naoray\Test\Facades\Test::class,
+        'Test' => Naoray\Test\facades\Test::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,

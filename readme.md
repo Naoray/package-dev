@@ -1,6 +1,8 @@
 ## Example package development build
 
-I had some troubles getting started with package development in **laravel 5.3**, that's why this repository was created.
+*If you have questions, try to find the answers in the [official documentation](https://laravel.com/docs/5.4/packages)*
+
+I had some troubles getting started with package development in **laravel 5.4**, that's why this repository was created.
 
 This repo is for helping you to have a quick and easy start with package development in *laravel 5.3*. It was inspired 
 by [jaiwalker](https://github.com/jaiwalker)'s [jaiwalker/setup-laravel5-package](https://github.com/jaiwalker/setup-laravel5-package)
@@ -61,48 +63,19 @@ Run `php artisan make:command CommandName`, go to `app/Console/` and cut out the
 
 Add the command to the *ServiceProvider*'s *command* array and register the command like in this [file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/TestServiceProvider.php))
 ```php
+                
+    public function register()
+    {
         /**
-         * The commands to be registered.
-         *
-         * @var array
+         * some other code ...
          */
-        protected $commands = [
-            'Test' => 'command.test.test',
-        ];
-        
-        public function register()
-        {
-                /**
-                 * some other code ...
-                 */
-        
-                $this->registerCommands();
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                commands\TestCommand::class
+            ]);
         }
-        
-        /**
-         * Register the given commands.
-         *
-         * @return void
-         */
-        protected function registerCommands()
-        {
-            foreach (array_keys($this->commands) as $command) {
-                $method = "register{$command}Command";
-                call_user_func_array([$this, $method], []);
-            }
-    
-            $this->commands(array_values($this->commands));
-        }
-    
-        /**
-         * Register the test command
-         */
-        protected function registerTestCommand()
-        {
-            $this->app->singleton('command.test.test', function () {
-                return new TestCommand();
-            });
-        }
+    }
 ```
  
 ---
@@ -114,11 +87,9 @@ In your `src` folder create a `facades/` folder. Within the `facades/` folder cr
 In your `src` folder create a file named like the *facade* you created before.
 ([example file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/Test.php))
 
-**Note:** you have to bind your facade with the 'facade file' in your **ServiceProvider** like:
+**Note:** you have to alias your facade with the 'facade file' in your **ServiceProvider** like:
 ```
-    $this->app->bind('naoray-test', function() {
-        return new Test;
-    });
+    $this->app->alias(Test::class, 'naoray-test');
 ```
 The value you use to bind your *facade* has to be the same value like in the `facade`s `getFacadeAccessor()` method. 
 
