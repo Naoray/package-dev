@@ -63,48 +63,19 @@ Run `php artisan make:command CommandName`, go to `app/Console/` and cut out the
 
 Add the command to the *ServiceProvider*'s *command* array and register the command like in this [file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/TestServiceProvider.php))
 ```php
+                
+    public function register()
+    {
         /**
-         * The commands to be registered.
-         *
-         * @var array
+         * some other code ...
          */
-        protected $commands = [
-            'Test' => 'command.test.test',
-        ];
-        
-        public function register()
-        {
-                /**
-                 * some other code ...
-                 */
-        
-                $this->registerCommands();
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                commands\TestCommand::class
+            ]);
         }
-        
-        /**
-         * Register the given commands.
-         *
-         * @return void
-         */
-        protected function registerCommands()
-        {
-            foreach (array_keys($this->commands) as $command) {
-                $method = "register{$command}Command";
-                call_user_func_array([$this, $method], []);
-            }
-    
-            $this->commands(array_values($this->commands));
-        }
-    
-        /**
-         * Register the test command
-         */
-        protected function registerTestCommand()
-        {
-            $this->app->singleton('command.test.test', function () {
-                return new TestCommand();
-            });
-        }
+    }
 ```
  
 ---
@@ -118,7 +89,7 @@ In your `src` folder create a file named like the *facade* you created before.
 
 **Note:** you have to bind your facade with the 'facade file' in your **ServiceProvider** like:
 ```
-    $this->app->bind(Test::class, 'naoray-test');
+    $this->app->bind('naoray-test', Test::class);
 ```
 The value you use to bind your *facade* has to be the same value like in the `facade`s `getFacadeAccessor()` method. 
 
