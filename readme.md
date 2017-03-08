@@ -87,9 +87,9 @@ In your `src` folder create a `facades/` folder. Within the `facades/` folder cr
 In your `src` folder create a file named like the *facade* you created before.
 ([example file](https://github.com/Naoray/package-dev/blob/master/packages/naoray/test/src/Test.php))
 
-**Note:** you have to bind your facade with the 'facade file' in your **ServiceProvider** like:
+**Note:** you have to alias your facade with the 'facade file' in your **ServiceProvider** like:
 ```
-    $this->app->bind('naoray-test', Test::class);
+    $this->app->alias(Test::class, 'naoray-test');
 ```
 The value you use to bind your *facade* has to be the same value like in the `facade`s `getFacadeAccessor()` method. 
 

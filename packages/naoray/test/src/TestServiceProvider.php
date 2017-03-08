@@ -42,6 +42,6 @@ class TestServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom( __DIR__.'/config/test.php', 'test');
 
-        $this->app->bind('naoray-test', Test::class);
+        $this->app->alias(Test::class, 'naoray-test');
     }
 }
