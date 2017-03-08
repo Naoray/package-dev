@@ -1,6 +1,8 @@
 ## Example package development build
 
-I had some troubles getting started with package development in **laravel 5.3**, that's why this repository was created.
+*If you have questions, try to find the answers in the [official documentation](https://laravel.com/docs/5.4/packages)*
+
+I had some troubles getting started with package development in **laravel 5.4**, that's why this repository was created.
 
 This repo is for helping you to have a quick and easy start with package development in *laravel 5.3*. It was inspired 
 by [jaiwalker](https://github.com/jaiwalker)'s [jaiwalker/setup-laravel5-package](https://github.com/jaiwalker/setup-laravel5-package)
@@ -116,9 +118,7 @@ In your `src` folder create a file named like the *facade* you created before.
 
 **Note:** you have to bind your facade with the 'facade file' in your **ServiceProvider** like:
 ```
-    $this->app->bind('naoray-test', function() {
-        return new Test;
-    });
+    $this->app->bind(Test::class, 'naoray-test');
 ```
 The value you use to bind your *facade* has to be the same value like in the `facade`s `getFacadeAccessor()` method. 
 
