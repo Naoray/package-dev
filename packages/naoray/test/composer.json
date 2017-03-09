@@ -1,23 +1,34 @@
 {
     "name": "naoray/test",
-    "type": "library",
+    "description": "A test package to demonstrate how to develop a package for laravel.",
     "license": "MIT",
     "authors": [
         {
             "name": "Naoray",
-            "homepage": "http://nms.digital"
+            "homepage": "http://nms.digital",
+            "email": "krishan.koenig@gmail.com"
         }
     ],
+    "scripts": {
+      "test": "phpunit"
+    },
     "minimum-stability": "stable",
     "require": {
         "illuminate/support": "~5.4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~5.7",
+        "orchestra/testbench": "~3.4",
+        "illuminated/testing-tools": "^0.5.5"
     },
     "autoload": {
         "psr-4": {
             "Naoray\\Test\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Naoray\\Test\\Test\\": "tests"
         }
     }
 }
