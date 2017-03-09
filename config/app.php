@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
 
+        JeroenG\Packager\PackagerServiceProvider::class,
         Laravel\Dusk\DuskServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Naoray\Test\TestServiceProvider::class,
@@ -179,6 +180,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        naoray\larablog\larablogServiceProvider::class,
 
     ],
 

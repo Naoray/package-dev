@@ -5,3 +5,5 @@
 Homestead.json
 Homestead.yaml
 .env
+/packages/naoray/
+!/packages/naoray/test/*

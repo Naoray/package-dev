@@ -2,9 +2,6 @@
 
 namespace Naoray\Test\Test;
 
-use Artisan;
-use Monolog\Logger;
-
 class RouteTest extends TestCase
 {
 	/** @test */
